@@ -13,7 +13,7 @@ from tqdm import tqdm
 import pytorch_ssim
 from data_utils import TrainDatasetFromFolder, ValDatasetFromFolder, display_transform
 from loss import GeneratorLoss
-from model import Generator, Discriminator
+from model_fca_in_resnet import Generator, Discriminator
 
 from datetime import datetime
 
@@ -170,7 +170,7 @@ if __name__ == '__main__':
 
 
         netG.eval()
-        out_path = 'training_results/SRGAN_' + str(UPSCALE_FACTOR) + '/'
+        out_path = 'training_results/SRGAN_FCA_IN_ResNet' + str(UPSCALE_FACTOR) + '/'
         if not os.path.exists(out_path):
             os.makedirs(out_path)
 
@@ -246,7 +246,7 @@ if __name__ == '__main__':
 
 
         # save model parameters
-        model_save_dir = 'epochs/SRGAN'
+        model_save_dir = 'epochs/SRGAN_FCA_IN_ResNet'
         g_dir = os.path.join(model_save_dir, 'G')
         d_dir = os.path.join(model_save_dir, 'D')
         
