@@ -14,29 +14,29 @@ class GeneratorLoss(nn.Module):
         self.mse_loss = nn.MSELoss()
         self.tv_loss = TVLoss()
 
-def forward(self, out_labels, out_images, target_images):
-    # Adversarial Loss
-    adversarial_loss = torch.mean(1 - out_labels)
-    
-    # 将单通道图像转换为三通道
-    if out_images.size(1) == 1:
-        out_images_3ch = out_images.repeat(1, 3, 1, 1)
-    else:
-        out_images_3ch = out_images
+    def forward(self, out_labels, out_images, target_images):
+        # Adversarial Loss
+        adversarial_loss = torch.mean(1 - out_labels)
         
-    if target_images.size(1) == 1:
-        target_images_3ch = target_images.repeat(1, 3, 1, 1)
-    else:
-        target_images_3ch = target_images
-    
-    # Perception Loss
-    perception_loss = self.mse_loss(self.loss_network(out_images_3ch), self.loss_network(target_images_3ch))
-    
-    # Image Loss
-    image_loss = self.mse_loss(out_images, target_images)
-    # TV Loss
-    tv_loss = self.tv_loss(out_images)
-    return image_loss + 0.001 * adversarial_loss + 0.006 * perception_loss + 2e-8 * tv_loss
+        # 将单通道图像转换为三通道
+        if out_images.size(1) == 1:
+            out_images_3ch = out_images.repeat(1, 3, 1, 1)
+        else:
+            out_images_3ch = out_images
+            
+        if target_images.size(1) == 1:
+            target_images_3ch = target_images.repeat(1, 3, 1, 1)
+        else:
+            target_images_3ch = target_images
+        
+        # Perception Loss
+        perception_loss = self.mse_loss(self.loss_network(out_images_3ch), self.loss_network(target_images_3ch))
+        
+        # Image Loss
+        image_loss = self.mse_loss(out_images, target_images)
+        # TV Loss
+        tv_loss = self.tv_loss(out_images)
+        return image_loss + 0.001 * adversarial_loss + 0.006 * perception_loss + 2e-8 * tv_loss
 
 
 class TVLoss(nn.Module):
