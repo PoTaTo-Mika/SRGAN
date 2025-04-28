@@ -246,11 +246,15 @@ if __name__ == '__main__':
 
 
         # save model parameters
-        model_save_dir = 'epochs'
-        if not os.path.exists(model_save_dir):
-            os.makedirs(model_save_dir)
-        torch.save(netG.state_dict(), os.path.join(model_save_dir, 'netG_epoch_%d_%d.pth' % (UPSCALE_FACTOR, epoch)))
-        torch.save(netD.state_dict(), os.path.join(model_save_dir, 'netD_epoch_%d_%d.pth' % (UPSCALE_FACTOR, epoch)))
+        model_save_dir = 'epochs/exp_name'
+        g_dir = os.path.join(model_save_dir, 'G')
+        d_dir = os.path.join(model_save_dir, 'D')
+        
+        os.makedirs(g_dir, exist_ok=True)
+        os.makedirs(d_dir, exist_ok=True)
+        
+        torch.save(netG.state_dict(), os.path.join(g_dir, 'netG_epoch_%d_%d.pth' % (UPSCALE_FACTOR, epoch)))
+        torch.save(netD.state_dict(), os.path.join(d_dir, 'netD_epoch_%d_%d.pth' % (UPSCALE_FACTOR, epoch)))
         logging.info(f"Saved models for epoch {epoch}")
 
         # save loss\scores\psnr\ssim to results dictionary

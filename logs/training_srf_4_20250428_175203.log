@@ -1,0 +1,6 @@
+2025-04-28 17:52:03,493 - root - INFO - Starting training process...
+2025-04-28 17:52:03,493 - root - INFO - Parameters: Crop Size=200, Upscale Factor=4, Epochs=100
+2025-04-28 17:52:03,541 - root - INFO - # generator parameters: 734219
+2025-04-28 17:52:03,614 - root - INFO - # discriminator parameters: 5215425
+2025-04-28 17:52:55,878 - root - INFO - Using CUDA for training.
+2025-04-28 17:52:55,879 - root - INFO - --- Epoch 1/100 ---
