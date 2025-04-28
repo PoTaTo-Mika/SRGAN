@@ -18,7 +18,7 @@ from model import Generator, Discriminator
 from datetime import datetime
 
 parser = argparse.ArgumentParser(description='Train Super Resolution Models')
-parser.add_argument('--crop_size', default=200, type=int, help='training images crop size')
+parser.add_argument('--crop_size', default=256, type=int, help='training images crop size')
 parser.add_argument('--upscale_factor', default=4, type=int, choices=[2, 4, 8],
                     help='super resolution upscale factor')
 parser.add_argument('--num_epochs', default=100, type=int, help='train epoch number')
@@ -170,7 +170,7 @@ if __name__ == '__main__':
 
 
         netG.eval()
-        out_path = 'training_results/SRF_' + str(UPSCALE_FACTOR) + '/'
+        out_path = 'training_results/SRGAN_' + str(UPSCALE_FACTOR) + '/'
         if not os.path.exists(out_path):
             os.makedirs(out_path)
 
@@ -246,7 +246,7 @@ if __name__ == '__main__':
 
 
         # save model parameters
-        model_save_dir = 'epochs/exp_name'
+        model_save_dir = 'epochs/SRGAN'
         g_dir = os.path.join(model_save_dir, 'G')
         d_dir = os.path.join(model_save_dir, 'D')
         
