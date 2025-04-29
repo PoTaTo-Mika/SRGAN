@@ -2,3 +2,4 @@ __pycache__/
 epochs/
 training_results/
 logs/
+.ipynb_checkpoints/
