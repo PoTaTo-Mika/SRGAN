@@ -170,7 +170,7 @@ if __name__ == '__main__':
 
 
         netG.eval()
-        out_path = 'training_results/SRGAN_ResNet_IN_FCA_' + str(UPSCALE_FACTOR) + '/'
+        out_path = 'training_results/SRGAN_' + str(UPSCALE_FACTOR) + '/'
         if not os.path.exists(out_path):
             os.makedirs(out_path)
 
@@ -246,7 +246,7 @@ if __name__ == '__main__':
 
 
         # save model parameters
-        model_save_dir = 'epochs/SRGAN_ResNet_IN_FCA_'
+        model_save_dir = 'epochs/SRGAN'
         g_dir = os.path.join(model_save_dir, 'G')
         d_dir = os.path.join(model_save_dir, 'D')
         
