@@ -13,8 +13,7 @@ from tqdm import tqdm
 import pytorch_ssim
 from data_utils import TrainDatasetFromFolder, ValDatasetFromFolder, display_transform
 from loss import GeneratorLoss
-from model_resnet_in_fca import GeneratorAblationFCA as Generator
-from model_resnet_in_fca import Discriminator
+from models.model import Generator, Discriminator
 
 from datetime import datetime
 
